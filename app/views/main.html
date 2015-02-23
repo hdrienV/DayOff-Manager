@@ -1,0 +1,20 @@
+<div class="jumbotron">
+  <h1>Test</h1>
+  <p class="lead">
+    <!--<img src="images/yeoman.png" alt="I'm Yeoman"><br>-->
+    exemple de texte
+  </p>
+  <p><a class="btn btn-lg btn-success" ng-href="#/">Bouton<span class="glyphicon glyphicon-ok"></span></a></p>
+</div>
+
+<div class="row marketing"  ng-controller="MainCtrl">
+  <h3>{{title}}</h3>
+  <div ng-repeat="tech in techs">
+    <h4>{{tech.name}}</h4>
+    <p>
+      {{tech.description}}
+    </p>
+  </div>
+
+
+</div>
