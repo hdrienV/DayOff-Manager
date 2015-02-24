@@ -13,6 +13,7 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/login.css">
     <!-- endbuild -->
   </head>
   <body ng-app="dayOffManagerApp">
@@ -34,54 +35,61 @@
             </button>
 
             <a class="navbar-brand" href="#/"><span class="glyphicon glyphicon-calendar"></span> Day-Off Manager</a>
-          </div>
 
-          <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-              <li>
-                <a href="" class="dropdown-toggle" data-toggle="dropdown">Users<b class="caret"></b></a>
-                <ul class="dropdown-menu multi-level">
-                  <li><a href="#/about">Liste User</a></li>
-                  <li><a href="#/">Créer User</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Demande Congé</a></li>
-                  <li><a href="#">Congé User</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="" class="dropdown-toggle" data-toggle="dropdown">Configurations<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Contrat</a></li>
-                  <li><a href="#">Type Congé</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Equipe</a></li>
-                  <li><a href="#">Fonction</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="" class="dropdown-toggle" data-toggle="dropdown">Validation<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Mes Collaborateurs</a></li>
-                  <li><a href="#">Les Demandes</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="" class="dropdown-toggle" data-toggle="dropdown">Demande<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Demander congés</a></li>
-                  <li><a href="#">Compte congés</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="" class="dropdown-toggle" data-toggle="dropdown">Calendrier<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Mon calendrier</a></li>
-                  <li><a href="#">Mes collaborateurs</a></li>
-                  <li><a href="#">Mon équipe</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div><!--/.nav-collapse -->
+          </div>
+          <div ng-if="globals.currentUser" id="nav-role">
+            <p class="navbar-text" >
+              <b>Welcome, {{ globals.currentUser.username }}</b>
+              <a href="#/login" class="navbar-link">Logout</a>
+            </p>
+
+            <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li ng-if="globals.currentUser.role == 'admin'">
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown">Users<b class="caret"></b></a>
+                  <ul class="dropdown-menu multi-level">
+                    <li><a href="#/about">Liste User</a></li>
+                    <li><a href="#/">Créer User</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Demande Congé</a></li>
+                    <li><a href="#">Congé User</a></li>
+                  </ul>
+                </li>
+                <li  ng-if="globals.currentUser.role == 'admin'">
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown">Configurations<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Contrat</a></li>
+                    <li><a href="#">Type Congé</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Equipe</a></li>
+                    <li><a href="#">Fonction</a></li>
+                  </ul>
+                </li>
+                <li ng-if="globals.currentUser.role == 'admin'|| globals.currentUser.role=='manager'">
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown">Validation<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Mes Collaborateurs</a></li>
+                    <li><a href="#">Les Demandes</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown">Demande<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Demander congés</a></li>
+                    <li><a href="#">Compte congés</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown">Calendrier<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Mon calendrier</a></li>
+                    <li  ng-if="globals.currentUser.role == 'admin'|| globals.currentUser.role=='manager'"><a href="#">Mes collaborateurs</a></li>
+                    <li><a href="#">Mon équipe</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
         </div>
       </div>
     </div>
@@ -126,6 +134,8 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/services/login.js"></script>
         <!-- endbuild -->
 </body>
 </html>

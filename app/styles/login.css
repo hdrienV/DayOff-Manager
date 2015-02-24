@@ -1,0 +1,17 @@
+#forgotPassword{
+  float:right;
+  font-size: 80%;
+  position: relative;
+  top:-10px;
+}
+#containerLogin{
+  padding-top:30px;
+}
+
+.champLogin{
+  margin-bottom: 25px;
+}
+
+.buttonLogin{
+  margin-top:20px;
+}
