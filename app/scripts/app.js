@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.calendar'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -31,6 +32,13 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
+      .when('/calendar', {
+        templateUrl: 'views/calendar.html',
+        controller: 'CalendarCtrl'
+      })
+      .when('/ask', {
+        templateUrl: 'views/user_ask_dayoff.html',
+      })
       .when('/error', {
         templateUrl: 'views/404.html'
       })
@@ -38,6 +46,7 @@ angular
         redirectTo: '/'
       });
   })
+
   .run(['$rootScope', '$location', '$cookieStore', '$http',
     function ($rootScope, $location, $cookieStore, $http) {
       //Enumerate routes that need admin rights
