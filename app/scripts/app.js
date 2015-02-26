@@ -38,6 +38,7 @@ angular
       })
       .when('/ask', {
         templateUrl: 'views/user_ask_dayoff.html',
+        controller: 'DemandeCongeFormCtrl'
       })
       .when('/error', {
         templateUrl: 'views/404.html'

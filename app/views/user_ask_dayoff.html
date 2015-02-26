@@ -1,35 +1,64 @@
+<h2>Demander Congé</h2>
+<form name="formDemande" class="form-horizontal" ng-controller="DemandeCongeFormCtrl" ng-submit="submitDemandeForm()" novalidate>
+  <div class="well">
 
-  <div class="row">
-    <div class='col-sm-6'>
-      <div class="form-group">
-          <input  data-date-format="mm/dd/yyyy">
+    <div class="form-group">
+      <label for="start_date" class="col-sm-5 control-label">Start Date*</label>
+      <div class="col-sm-3">
+          <div id="start_date" class="input-group  date from_date"  data-date-format="dd/mm/yyyy">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            <div class="">
+              <input class="form-control " id="dp1" type="text"  ng-model="date_start.date"  readonly required>
+            </div>
+          </div>
+            <div >
+              <select class="form-control" name="halfday"  ng-options="option.value as option.name for option in halfday" ng-model="date_start.half">
+
+              </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="end_date" class="col-sm-5 control-label">End Date*</label>
+      <div class="col-sm-3">
+        <div id="end_date" class="input-group  date to_date"  data-date-format="dd/mm/yyyy">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+          <div class="">
+            <input class="form-control " id="dp2" type="text"  name="date_end" ng-model="date_end.date" readonly required >
+          </div>
+        </div>
+        <div >
+          <select class="form-control" name="category"  ng-options="option.value as option.name for option in halfday" ng-model="date_end.half">
+          </select>
+        </div>
       </div>
     </div>
 
-  </div>
-
-
-  <div class="control-group">
-    <label for="date-picker-2" class="control-label">B</label>
-    <div class="controls">
-      <div class="input-group">
-        <input id="date-picker-2" type="text" class="date-picker form-control" />
-        <label for="date-picker-2" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span>
-
-        </label>
+    <div class="form-group">
+      <label for="duration" class="col-sm-5 control-label">Durée</label>
+      <div class="col-sm-3">
+        <input id="duration" type="text" class="form-control col-sm-10" name="duration" ng-model="duration" readonly/>
       </div>
     </div>
-  </div>
 
-
-  <div class="form-group row">
-    <div class="col-xs-8">
-      <label class="control-label">My Label</label>
-      <div class="input-group date" id="dp3" data-date-format="dd/mm/yyyy">
-        <input class="form-control" type="text" readonly="" value="">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+    <div class="form-group">
+      <label for="typeconge" class="col-sm-5 control-label">Type Congé*</label>
+      <div class="col-sm-3">
+        <select id="typeconge" class="form-control" name="typeconge" ng-options="option.value as option.name for option in types" ng-model="conge.type" required>
+        </select>
       </div>
     </div>
-  </div>
 
-  <script>$(".input-group.date").datepicker({ autoclose: true, todayHighlight: true });</script>
+    <div class="form-group">
+      <label for="causeconge" class="col-sm-5 control-label">Cause</label>
+      <div class="col-sm-3">
+        <textarea id="causeconge" type="text" class="form-control col-sm-10" name="causeconge" ng-model="cause"></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class=" col-sm-offset-6 btn btn-success" ng-disabled="formDemande.$invalid">Demander</button>
+    </div>
+  </div>
+</form>
+

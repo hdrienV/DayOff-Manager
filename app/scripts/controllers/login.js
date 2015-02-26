@@ -11,6 +11,7 @@ angular.module('dayOffManagerApp')
       AuthenticationService.ClearCredentials();
 
       $scope.login = function () {
+
         AuthenticationService.Login($scope.username, $scope.password, function(response) {
           if(response.success) {
             AuthenticationService.SetCredentials(response.username, $scope.password, response.id,response.role);
