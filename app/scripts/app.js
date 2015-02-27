@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.calendar'
+    'ui.calendar',
+    'smart-table'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -39,6 +40,10 @@ angular
       .when('/ask', {
         templateUrl: 'views/user_ask_dayoff.html',
         controller: 'DemandeCongeFormCtrl'
+      })
+      .when('/list', {
+        templateUrl: 'views/list_dayoff.html',
+        controller: 'ListDayoffCtrl'
       })
       .when('/error', {
         templateUrl: 'views/404.html'
