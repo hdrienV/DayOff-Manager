@@ -48,7 +48,7 @@ angular.module('dayOffManagerApp')
 
     $scope.alertOnEventClick = function( date){
       $scope.alertMessage = (date.title + ' was clicked ');
-    }
+    };
 
     /* config object */
     $scope.uiConfig = {

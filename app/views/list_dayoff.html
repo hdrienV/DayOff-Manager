@@ -11,49 +11,50 @@
       <label><input type="checkbox" ng-model="checked" ng-click="all()">No pagination</label>
     </div>
 
+    <div class="exportable">
+      <table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-striped">
+        <thead>
+  <!--      <tr>
+          <th colspan="2"><input st-search="" class="form-control" placeholder="global search ..." type="text" ng-model="searchin"/></th>
+        </tr>-->
+        <tr>
+          <th st-sort="firstName">First name</th>
+          <th st-sort="lastName">Last name</th>
+          <th st-sort="congeId">Conge id</th>
+          <th st-sort="dateB">Date début</th>
+          <th st-sort="dateE">Date fin</th>
+          <th st-sort="duree">Durée</th>
+          <th st-sort="type">Type</th>
+          <th st-sort="status">Statut</th>
+        </tr>
 
-    <table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-striped">
-      <thead>
-      <tr>
-        <!--<th colspan="2"><input st-search="" class="form-control" placeholder="global search ..." type="text" ng-model="searchin"/></th>-->
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in displayedCollection | filter:searchText">
+          <td>{{row.firstName}}</td>
+          <td>{{row.lastName}}</td>
+          <td>{{row.congeId}}</td>
+          <td>{{row.dateB | date:'dd/MM/yyyy'}}</td>
+          <td>{{row.dateE | date:'dd/MM/yyyy'}}</td>
+          <td>{{row.duree}}</td>
+          <td>{{row.type}}</td>
+          <td>{{row.status}}</td>
+          <td>
+            <button type="button" ng-click="removeItem(row)" class="btn btn-sm btn-danger">
+              <i class="glyphicon glyphicon-remove-circle">
+              </i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+        <tr>
+          <td colspan="5" class="text-center" ng-hide="checked">
+            <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="3"></div>
+          </td>
+        </tr>
+      </table>
+    </div>
 
-
-      </tr>
-      <tr>
-        <th st-sort="firstName">First name</th>
-        <th st-sort="lastName">Last name</th>
-        <th st-sort="congeId">Conge id</th>
-        <th st-sort="dateB">Date début</th>
-        <th st-sort="dateE">Date fin</th>
-        <th st-sort="duree">Durée</th>
-        <th st-sort="type">Type</th>
-        <th st-sort="status">Statut</th>
-      </tr>
-
-      </thead>
-      <tbody>
-      <tr ng-repeat="row in displayedCollection | filter:searchText">
-        <td>{{row.firstName}}</td>
-        <td>{{row.lastName}}</td>
-        <td>{{row.congeId}}</td>
-        <td>{{row.dateB | date:'dd/MM/yyyy'}}</td>
-        <td>{{row.dateE | date:'dd/MM/yyyy'}}</td>
-        <td>{{row.duree}}</td>
-        <td>{{row.type}}</td>
-        <td>{{row.status}}</td>
-        <td>
-          <button type="button" ng-click="removeItem(row)" class="btn btn-sm btn-danger">
-            <i class="glyphicon glyphicon-remove-circle">
-            </i>
-          </button>
-        </td>
-      </tr>
-      </tbody>
-      <tr>
-        <td colspan="5" class="text-center" ng-hide="checked">
-          <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="3"></div>
-        </td>
-      </tr>
-    </table>
+    <button ng-click="exportData()">Export</button>
   </div>
 </div>
