@@ -19,6 +19,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       // bower:js
+      'bower_components/modernizr/modernizr.js',
       'bower_components/jquery/dist/jquery.js',
       'bower_components/angular/angular.js',
       'bower_components/bootstrap/dist/js/bootstrap.js',
@@ -34,6 +35,10 @@ module.exports = function(config) {
       'bower_components/angular-ui-calendar/src/calendar.js',
       'bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js',
       'bower_components/angular-smart-table/dist/smart-table.js',
+      'bower_components/js-polyfills/web.js',
+      'bower_components/js-polyfills/es5.js',
+      'bower_components/js-polyfills/es6.js',
+      'bower_components/js-xlsx/dist/xlsx.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

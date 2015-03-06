@@ -4,6 +4,19 @@ angular.module('dayOffManagerApp')
   .controller('DemandeCongeFormCtrl', ['$scope','$location','$rootScope','CalendarService', function ($scope, $location, $rootScope,DemandeService) {
 
 //------------CODE-DATE-CALENDRIER-----------------------
+
+    $.fn.datepicker.dates['fr'] = {
+      days: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
+      daysShort: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"],
+      daysMin: ["D", "L", "Ma", "Me", "J", "V", "S", "D"],
+      months: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
+      monthsShort: ["Jan", "Fév", "Mar", "Avr", "Mai", "Jui", "Jul", "Aou", "Sep", "Oct", "Nov", "Déc"],
+      today: "Aujourd'hui",
+      clear: "Effacer",
+      weekStart: 1,
+      format: "dd/mm/yyyy"
+    };
+
     var nowTemp = new Date();
     var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
     var startDate = now;
@@ -13,7 +26,7 @@ angular.module('dayOffManagerApp')
     ToEndDate.setDate(ToEndDate.getDate()+365);
 
     $('.from_date').datepicker({
-
+      language: "fr",
       weekStart: 1,
       startDate: now,
       endDate: ToEndDate,
@@ -26,7 +39,7 @@ angular.module('dayOffManagerApp')
       });
     $('.to_date')
       .datepicker({
-
+        language: "fr",
         weekStart: 1,
         startDate: startDate,
         endDate: ToEndDate,
@@ -39,7 +52,7 @@ angular.module('dayOffManagerApp')
       });
 //--------------------------------------------------------
 
-    $scope.halfday=[{"value":0,"name":'Morning'},{"value":1,"name":'Afternoon'}];
+    $scope.halfday=[{"value":0,"name":'Matin'},{"value":1,"name":'Après-Midi'}];
     $scope.types=[{"value":0,"name":'Congé1'},{"value":1,"name":'Congé2'}];
 
     $scope.date_end={half:$scope.halfday[0].value,date:""};

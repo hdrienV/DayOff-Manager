@@ -21,7 +21,7 @@
     <!-- endbuild -->
   </head>
   <body ng-app="dayOffManagerApp">
-    <!--[if lt IE 7]>
+    <!--[if lt IE 9]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
@@ -43,20 +43,20 @@
           </div>
           <div ng-if="globals.currentUser" id="nav-role">
             <p class="navbar-text" >
-              <b>Welcome, {{ globals.currentUser.username }}</b>
+              <b  ng-cloak class="ng-cloak">Bienvenue, {{ globals.currentUser.username }}</b>
               <a href="#/login" class="navbar-link">Logout</a>
             </p>
 
             <div class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
                 <li ng-if="globals.currentUser.role == 'admin'">
-                  <a href="" class="dropdown-toggle" data-toggle="dropdown">Users<b class="caret"></b></a>
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown">Utilisateurs<b class="caret"></b></a>
                   <ul class="dropdown-menu multi-level">
-                    <li><a href="#/about">Liste User</a></li>
-                    <li><a href="#/">Créer User</a></li>
+                    <li><a href="#/about">Liste Utilisateurs</a></li>
+                    <li><a href="#/">Créer Utilisateur</a></li>
                     <li class="divider"></li>
                     <li><a href="#">Demande Congé</a></li>
-                    <li><a href="#">Congé User</a></li>
+                    <li><a href="#">Congés Utilisateurs</a></li>
                   </ul>
                 </li>
                 <li  ng-if="globals.currentUser.role == 'admin'">
@@ -122,6 +122,7 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
@@ -137,6 +138,10 @@
     <script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
     <script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
     <script src="bower_components/angular-smart-table/dist/smart-table.js"></script>
+    <script src="bower_components/js-polyfills/web.js"></script>
+    <script src="bower_components/js-polyfills/es5.js"></script>
+    <script src="bower_components/js-polyfills/es6.js"></script>
+    <script src="bower_components/js-xlsx/dist/xlsx.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -153,8 +158,12 @@
         <script src="scripts/services/calendar.js"></script>
         <script src="scripts/services/ask_dayoff.js"></script>
         <!-- endbuild -->
+
+        <script src="/bower_components/excel-export/Blob.js"></script>
+        <script src="bower_components/js-polyfills/typedarray.js"></script>
+        <script src="bower_components/js-xlsx/shim.js"></script>
+        <script src="bower_components/js-xlsx/dist/xlsx.full.min.js"></script>
         <script src="/bower_components/excel-export/alasql.min.js"></script>
-        <script src="/bower_components/excel-export/xlsx.core.min.js"></script>
 
 </body>
 </html>

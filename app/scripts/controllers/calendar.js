@@ -60,6 +60,13 @@ angular.module('dayOffManagerApp')
           center: '',
           right: 'today prev,next'
         },
+        monthNames: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
+        dayNamesShort: ["Dim","Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"],
+        firstDay:1,
+        buttonText: {
+          today:"Aujourd'hui"
+        },
+
         eventClick: $scope.alertOnEventClick
       }
     };
