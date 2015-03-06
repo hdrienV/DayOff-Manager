@@ -1,0 +1,13 @@
+.modal-vertical-centered {
+  transform: translate(0, 50%) !important;
+  -ms-transform: translate(0, 50%) !important; /* IE 9 */
+  -webkit-transform: translate(0, 50%) !important; /* Safari and Chrome */
+}
+
+.fc-content {
+  cursor: pointer;
+}
+
+.fc-content .fc-time{
+  display : none !important;
+}

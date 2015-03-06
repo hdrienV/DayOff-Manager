@@ -19,11 +19,33 @@
                     <span class="label label-danger">Refusé</span>
                   </div>
                 </div><br>
-                <div class="calendar" ng-model="eventSources2" calendar="myCalendar3" ui-calendar="uiConfig.calendar"></div>
+                <div class="calendar " ng-model="eventSources2" calendar="myCalendar3" ui-calendar="uiConfig.calendar"></div>
           </div>
         </div>
       </div>
 
     </section>
   </div>
+
+  <div id="fullCalModal" class="modal fade">
+    <div class="modal-dialog modal-vertical-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">Fermer</span></button>
+          <h4 id="modalTitle" class="modal-title"></h4>
+        </div>
+        <div id="modalBody" class="modal-body">
+          id congé : <span class="id_conge"></span>
+          Début : <span class="startDate"></span>
+          Fin : <span class="endDate"></span>
+          Durée : <span class="duration"></span>
+          Type : <span class="type_conge"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

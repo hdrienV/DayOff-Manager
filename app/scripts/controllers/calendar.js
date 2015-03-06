@@ -50,11 +50,22 @@ angular.module('dayOffManagerApp')
       $scope.alertMessage = (date.title + ' was clicked ');
     };
 
+    $scope.showModal= function(event, jsEvent, view) {
+      $('#modalTitle').html(event.title);
+      $('.id_conge').html(event.id);
+      $('.startDate').html(event.start);
+      $('.endDate').html(event.end);
+      $('.duration').html(event.duration);
+      $('.type_conge').html(event.type);
+      $('#fullCalModal').modal();
+    };
+
+
+
     /* config object */
     $scope.uiConfig = {
       calendar:{
         height: 450,
-        editable: false,
         header:{
           left: 'title',
           center: '',
@@ -67,13 +78,29 @@ angular.module('dayOffManagerApp')
           today:"Aujourd'hui"
         },
 
-        eventClick: $scope.alertOnEventClick
+        eventClick: $scope.showModal
       }
     };
 
     /* event sources array*/
 
     $scope.eventSources2 = [$scope.eventDeny, $scope.eventAtt, $scope.eventVal];
+
+    function reposition() {
+      var modal = $(this),
+        dialog = modal.find('.modal-dialog');
+      modal.css('display', 'block');
+
+      // Dividing by two centers the modal exactly, but dividing by three
+      // or four works better for larger screens.
+      dialog.css("margin-top", Math.max(0, ($(window).height() - dialog.height()) / 2));
+    }
+    // Reposition when a modal is shown
+    $('.modal').on('show.bs.modal', reposition);
+    // Reposition when the window is resized
+    $(window).on('resize', function() {
+      $('.modal:visible').each(reposition);
+    });
 
 
 }]);
